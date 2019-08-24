@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
+
+@import 'normalize';
+@import 'mixin';
+
+$card: #212534;
+$head: #2b3040;
+$text:#fff;
+$notactive:#8d91a3;
+$sale:#fedc3f;
+$brand:#13e28d;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font: 10px/1.6 'Lato', sans-serif;
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  color: $text;
+  height: 100%;
+  font-weight: 300;
+  @include backGround;
+}
+
+.tabs {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+	width:100%;
+	&__item{
+		width: 150px;
+		height: 100%;
+		padding-bottom: 20px;
+		border-bottom:3px solid transparent;
+		text-decoration: none;
+		list-style-type: none;
+		text-transform: uppercase;
+		color:$notactive;
+		@include hover{
+			border-bottom:3px solid white;
+			color:$text;
+			.tabs__icon{
+				@include tr(all);
+				fill:$text;
+			}
+		}
+	}
+	&__link{
+		text-decoration: none;
+		color:$text;
+	}
+	&__icon{
+		fill:$notactive;
+	}
+	
+}
+.card {
+  @include posCenter;
+  background-color: $card;
+  box-shadow: 0px 3px 44px -10px rgba(0,0,0,0.75);
+  height:540px;
+  width:600px;
+  &__head {
+    background-color: $head;
+    height: 115px;
+    width: 100%;
+    padding: 30px 20px 0 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  &__body{
+  	padding: 60px 50px 0 50px;
+  	display: flex;
+  	position: relative;
+  }
+  &__img{}
+  &__info{
+  	padding-left:40px;
+  }
+  &__title{
+  	margin:0 0 0 2px;
+  }
+  &__subtitle{
+  	font-size: 1.4rem;
+  }
+  p{
+  	margin-top: 20px;
+  	color:#b7bacd;
+  	font-size: 1.3rem;
+  	line-height: 1.7;
+  	font-weight: 400;
+  	
+  }
+  &__score{
+  	position: absolute;
+  	top:17%;
+  	left:82%;
+  }
+ &__foot{
+ 	padding: 0 50px;
+ 	display: flex;
+ 	justify-content: space-between;
+ 	height: 70px;
+ }
+ &__product{
+ 	display: none
+ } 
+}
+
+.active{
+	display: block;
+}
+
+.rate{
+	width:32%;
+	display: flex;
+	justify-content: center;
+	&__stars{
+		padding: 0;
+	}
+	&__star {
+		margin-left: 5px;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url(../img/star-active.png);
+	}
+}
+
+[data-stars="4"] .rate__star:nth-child(n+5),
+[data-stars="3"] .rate__star:nth-child(n+4),
+[data-stars="2"] .rate__star:nth-child(n+3),
+[data-stars="1"] .rate__star:nth-child(n+2),
+[data-stars="0"] .rate__star:nth-child(n+1) {
+	background-image: url(../img/star-disable.png)
+}
+
+.purchase{
+	width: 60%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.price{
+	display: flex;
+	flex-direction: column;
+	line-height: 1.2;
+	font-weight: 400;
+	&__discounte{
+		color:$sale;
+	}
+	&__cost{
+		font-size: 3.5rem;
+		font-weight: 700;
+	}
+}
+
+.btn{
+	background-color: $brand;
+	color:$text;
+	text-decoration: none;
+	width:160px;
+	height: 50px;
+	border:2px solid transparent;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-radius:3px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@include hover{
+		border:2px solid $brand;
+		background-color: transparent;
+		color:$brand;
+	}
+}
+
+.review{
+	display: inline-block;
+	width:300px;
+	padding:5px 0;
+	margin-bottom:10px;
+	border-radius:1px;
+	border-top:3px solid $brand;
+	border-bottom:3px solid $brand;
+	color:$text;
+	text-decoration: none;
+	@include shadowPush;
+	display: flex;
+	align-items: center;
+	&__score{
+		display: inline-block;
+		width:25%;
+		height: 70px;
+		padding: 15px;
+		border-radius:15%;
+		background-color: $brand;
+		font-weight: 700;
+		font-size: 2.5rem;
+		text-align: center;
+		&--users{
+			background-color: #ffcc34;
+		}
+		&--ign{
+			background-color: #bf1313;
+		}
+	}
+	&__words{
+		padding: 0 10px;
+		line-height: 1.2;
+	}
+	&__source{
+		font-weight: 700;
+	}
+	&__comment{
+		font-size: 1.3rem;
+	}
+}
+
+.store{
+	display: inline-block;
+	text-decoration: none;
+	color:$text;
+	padding:0 5px;
+	width:90%;
+	margin-bottom: 20px;
+	border-top:3px solid $brand;
+	border-bottom:3px solid $brand;
+	@include shadowPush;
+	&__info{
+		display: flex;
+		align-items: center;
+	}
+	&__logo{
+	width:70px;
+	}
+	&__name{
+		padding-left:10px;
+	}
+}
